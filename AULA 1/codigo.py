@@ -43,7 +43,7 @@ for linha in tabela.index:
     # Passo 4: Cadastrar um produto
     # Passo 5: Repetir o passo 4 até acabar a lista de produtos 
 
-    pyautogui.press("tab")
+    pyautogui.click(x=727, y=249)
     codigo = str(tabela.loc[linha, "codigo"])
     pyautogui.write(codigo)
     pyautogui.press("tab")
@@ -71,10 +71,10 @@ for linha in tabela.index:
     time.sleep(1)
 
     obs = str(tabela.loc[linha, "obs"])
-    if obs != "nan":
-        pyautogui.write(obs)
+    pyautogui.write(obs)
+    pyautogui.press("tab")
     pyautogui.press("enter")
 
     time.sleep(1)
-
-    pyautogui.scroll(5000)
+    pyautogui.press('pgup')
+    time.sleep(1)
