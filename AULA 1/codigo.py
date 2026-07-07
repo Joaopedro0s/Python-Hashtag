@@ -1,7 +1,8 @@
 # Passo 1: Entrar no Sistema
-
+import pyautogui
+import pandas
 def esperar():
-    time.sleep(0.5)
+    time.sleep(1)
 
 import pyautogui
 import time
@@ -10,11 +11,11 @@ esperar()
 pyautogui.write("opera")
 esperar()
 pyautogui.press("enter")
-time.sleep(5)
+time.sleep(2)
 pyautogui.write("https://dlp.hashtagtreinamentos.com/python/intensivao/login")
 esperar()
 pyautogui.press("enter")
-esperar()
+time.sleep(3)
 
 # Passo 2: Fazer Login
 
@@ -30,8 +31,50 @@ pyautogui.press("tab")
 esperar()
 pyautogui.press("enter")
 esperar()
-pyautogui.press("tab")
 
 # Passo 3: Importar a base de dados
-# Passo 4: Cadastrar um produto
-# Passo 5: Repetir o passo 4 até acabar a lista de produtos 
+
+import pandas
+
+tabela = pandas.read_csv("produtos.csv")
+
+for linha in tabela.index:
+
+    # Passo 4: Cadastrar um produto
+    # Passo 5: Repetir o passo 4 até acabar a lista de produtos 
+
+    pyautogui.press("tab")
+    codigo = str(tabela.loc[linha, "codigo"])
+    pyautogui.write(codigo)
+    pyautogui.press("tab")
+
+    marca = str(tabela.loc[linha, "marca"])
+    pyautogui.write(marca)
+    pyautogui.press("tab")
+
+    tipo = str(tabela.loc[linha, "tipo"])
+    pyautogui.write(tipo)
+    pyautogui.press("tab")
+
+    categoria = str(tabela.loc[linha, "categoria"])
+    pyautogui.write(categoria)
+    pyautogui.press("tab")
+
+    preco_unitario = str(tabela.loc[linha, "preco_unitario"])
+    pyautogui.write(preco_unitario)
+    pyautogui.press("tab")
+
+    custo = str(tabela.loc[linha, "custo"])
+    pyautogui.write(custo)
+    pyautogui.press("tab")
+
+    time.sleep(1)
+
+    obs = str(tabela.loc[linha, "obs"])
+    if obs != "nan":
+        pyautogui.write(obs)
+    pyautogui.press("enter")
+
+    time.sleep(1)
+
+    pyautogui.scroll(5000)
